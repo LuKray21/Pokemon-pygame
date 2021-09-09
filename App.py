@@ -100,32 +100,32 @@ class ObjectActionModel():
         self.left_moving_iterator = iter(self.left_moving_sprites)
         self.starting_stance = down_rest
 
-    def downMovingSprite(self):
+    def get_down_moving_sprite(self):
         try:
             return next(self.down_moving_iterator)
         except:
-            self.down_moving_iterator = iter(self.down_moving)
+            self.down_moving_iterator = iter(self.down_moving_sprites)
             return next(self.down_moving_iterator)
 
-    def upMovingSprite(self):
+    def get_up_moving_sprite(self):
         try:
             return next(self.up_moving_iterator)
         except:
-            self.up_moving_iterator = iter(self.up_moving)
+            self.up_moving_iterator = iter(self.up_moving_sprites)
             return next(self.up_moving_iterator)
 
-    def rightMovingSprite(self):
+    def get_right_moving_sprite(self):
         try:
             return next(self.right_moving_iterator)
         except:
-            self.right_moving_iterator = iter(self.right_moving)
+            self.right_moving_iterator = iter(self.right_moving_sprites)
             return next(self.right_moving_iterator)
 
-    def leftMovingSprite(self):
+    def get_left_moving_sprite(self):
         try:
             return next(self.left_moving_iterator)
         except:
-            self.left_moving_iterator = iter(self.left_moving)
+            self.left_moving_iterator = iter(self.left_moving_sprites)
             return next(self.left_moving_iterator)
 
 
@@ -149,19 +149,19 @@ class Human(pygame.sprite.Sprite):
             self.move_down()
 
     def move_up(self):
-        self.image = pygame.image.load(self.moving_model.upMovingSprite()).convert_alpha()
+        self.image = pygame.image.load(self.moving_model.get_up_moving_sprite()).convert_alpha()
         self.rect.y -= 10
 
     def move_down(self):
-        self.image = pygame.image.load(self.moving_model.downMovingSprite()).convert_alpha()
+        self.image = pygame.image.load(self.moving_model.get_down_moving_sprite()).convert_alpha()
         self.rect.y += 10
 
     def move_left(self):
-        self.image = pygame.image.load(self.moving_model.leftMovingSprite()).convert_alpha()
+        self.image = pygame.image.load(self.moving_model.get_left_moving_sprite()).convert_alpha()
         self.rect.x -= 10
 
     def move_right(self):
-        self.image = pygame.image.load(self.moving_model.rightMovingSprite()).convert_alpha()
+        self.image = pygame.image.load(self.moving_model.get_right_moving_sprite()).convert_alpha()
         self.rect.x += 10
 
 
